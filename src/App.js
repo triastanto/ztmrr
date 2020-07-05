@@ -12,8 +12,16 @@ class App extends Component {
     }
   }
 
-  onSearchChange(event) {
-    console.log(event.target.value);
+  // anytime we define function in react, it must be in arrow function form
+  // onSearchChange(event) {
+  onSearchChange = (event) => {
+    // we can't use this syntax to set the state value
+    // this.state.searchField = event.target.value;
+    this.setState({ searchField: event.target.value });
+    const filteredRobots = this.state.robots.filter(robot => {
+      return robot.name.toLowerCase().includes(this.state.searchField.toLowerCase());
+    });
+    console.log(filteredRobots);
   }
 
   render() {
