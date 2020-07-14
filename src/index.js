@@ -5,10 +5,9 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'tachyons';
 
+// remove strict mode to prevent multiple call constructor
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <App /> ,
   document.getElementById('root')
 );
 
