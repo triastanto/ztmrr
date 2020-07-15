@@ -7,7 +7,7 @@ const initialState = {
 // 1. single source of the truth
 // 2. state is read only
 // 3. changes using only pure function
-export const SearchRobots = (state = initialState, action = {}) => {
+export const searchRobots = (state = initialState, action = {}) => {
   switch (action.type) {
     case CHANGE_SEARCH_FIELD:
       // copies all enumerable own properties from
