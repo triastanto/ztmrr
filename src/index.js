@@ -8,11 +8,14 @@ import * as serviceWorker from './serviceWorker';
 import { searchRobots } from './reducers'
 import 'tachyons';
 
+// create a store in redux pattern
 const store = createStore(searchRobots)
 
 // remove strict mode to prevent multiple call constructor
 ReactDOM.render(
-  <App store={store} /> ,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('root')
 );
 
