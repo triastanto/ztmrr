@@ -1,18 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { createLogger } from 'redux-logger';
+import thunkMiddleware from 'redux-thunk';
 import './index.css';
 import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
-import { searchRobots } from './reducers'
+import { searchRobots, requestRobots } from './reducers'
 import 'tachyons';
 
-// create logger to monitor middleware
 const logger = createLogger();
-// create a store in redux pattern and apply logger
-const store = createStore(searchRobots, applyMiddleware(logger));
+const rootReducer = combineReducers({searchRobots, requestRobots});
+// redux-thunk is a middleware that waits and sees
+// if any action returns function instead of object
+const store = createStore(rootReducer, applyMiddleware(thunkMiddleware, logger));
 
 // remove strict mode to prevent multiple call constructor
 ReactDOM.render(
